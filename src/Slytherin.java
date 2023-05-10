@@ -53,4 +53,50 @@ public class Slytherin extends Hogwarts{
     public void setThirstForPower(int thirstForPower) {
         this.thirstForPower = thirstForPower;
     }
+
+    @Override
+    public String toString() {
+        return "Slytherin{" +
+                super.toString()+
+                "хитрость:" + cunning +
+                ", решительность:" + determination +
+                ", амбициозность:" + ambition +
+                ", находчивость:" + resourcefulness +
+                ", жажда власти:" + thirstForPower +
+                '}';
+    }
+    public String notFullToString() {
+        return "Slytherin{" +" Имя:"+getName()+
+                "хитрость:" + cunning +
+                ", решительность:" + determination +
+                ", амбициозность:" + ambition +
+                ", находчивость:" + resourcefulness +
+                ", жажда власти:" + thirstForPower +
+                '}' ;
+    }
+
+    public static void comparison(String firstName, String secondName, Slytherin[] studentSlytherin) {
+        int scoresFirst = 0;
+        int scoresSecond = 0;
+        for (Slytherin slytherin : studentSlytherin) {
+            if (firstName.equals(slytherin.getName())) {
+                System.out.println(slytherin.notFullToString());
+                scoresFirst = slytherin.getCunning() + slytherin.getDetermination() + slytherin.getAmbition() + slytherin.getResourcefulness() + slytherin.getThirstForPower();
+            }
+            if (secondName.equals(slytherin.getName())) {
+                System.out.println(slytherin.notFullToString());
+                scoresSecond = slytherin.getCunning() + slytherin.getDetermination() + slytherin.getAmbition() + slytherin.getResourcefulness() + slytherin.getThirstForPower();
+            }
+        }
+        if (scoresSecond > scoresFirst) {
+            System.out.println(firstName
+                    + " лучший Слизеринец, чем " + secondName);
+        } else if (scoresSecond < scoresFirst) {
+            System.out.println(secondName
+                    + " лучший Слизеринец, чем " + firstName);
+        } else {
+            System.out.println("Ученики оба хорошие Слизеринецы, имеют одинаковое количество баллов");
+        }
+
+    }
 }

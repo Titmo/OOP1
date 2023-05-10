@@ -33,4 +33,46 @@ public class Hufflepuff extends Hogwarts{
     public void setHonest(int honest) {
         this.honest = honest;
     }
+
+    @Override
+    public String toString() {
+        return "Hufflepuff{" +
+                super.toString()+
+                " трудолюбив:" + hardworking +
+                ", верен:" + loyal +
+                ", честен:" + honest +
+                '}';
+    }
+    public String notFullToString() {
+        return "Hufflepuff{" +" Имя:"+getName()+
+                " трудолюбив:" + hardworking +
+                ", верен:" + loyal +
+                ", честен:" + honest +
+                '}';
+    }
+
+    public static void comparison(String firstName, String secondName, Hufflepuff[] studentHufflepuff) {
+        int scoresFirst = 0;
+        int scoresSecond = 0;
+        for (Hufflepuff hufflepuff : studentHufflepuff) {
+            if (firstName.equals(hufflepuff.getName())) {
+                System.out.println(hufflepuff.notFullToString());
+                scoresFirst = hufflepuff.getHardworking() + hufflepuff.getLoyal() + hufflepuff.getHonest();
+            }
+            if (secondName.equals(hufflepuff.getName())) {
+                System.out.println(hufflepuff.notFullToString());
+                scoresSecond = hufflepuff.getHardworking() + hufflepuff.getLoyal() + hufflepuff.getHonest();
+            }
+        }
+        if (scoresSecond > scoresFirst) {
+            System.out.println(firstName
+                    + " лучший Пуффендорец , чем " + secondName);
+        } else if (scoresSecond < scoresFirst) {
+            System.out.println(secondName
+                    + " лучший Пуффендорец, чем " + firstName);
+        } else {
+            System.out.println("Ученики оба хорошие Пуффендорецы, имеют одинаковое количество баллов");
+        }
+
+    }
 }

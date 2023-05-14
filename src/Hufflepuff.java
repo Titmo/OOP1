@@ -51,28 +51,14 @@ public class Hufflepuff extends Hogwarts{
                 '}';
     }
 
-    public static void comparison(String firstName, String secondName, Hufflepuff[] studentHufflepuff) {
-        int scoresFirst = 0;
-        int scoresSecond = 0;
-        for (Hufflepuff hufflepuff : studentHufflepuff) {
-            if (firstName.equals(hufflepuff.getName())) {
-                System.out.println(hufflepuff.notFullToString());
-                scoresFirst = hufflepuff.getHardworking() + hufflepuff.getLoyal() + hufflepuff.getHonest();
-            }
-            if (secondName.equals(hufflepuff.getName())) {
-                System.out.println(hufflepuff.notFullToString());
-                scoresSecond = hufflepuff.getHardworking() + hufflepuff.getLoyal() + hufflepuff.getHonest();
-            }
-        }
-        if (scoresSecond > scoresFirst) {
-            System.out.println(firstName
-                    + " лучший Пуффендорец , чем " + secondName);
-        } else if (scoresSecond < scoresFirst) {
-            System.out.println(secondName
-                    + " лучший Пуффендорец, чем " + firstName);
-        } else {
-            System.out.println("Ученики оба хорошие Пуффендорецы, имеют одинаковое количество баллов");
-        }
+    @Override
+    public int calculateSpecificScore() {
+        return this.hardworking + this.loyal + this.honest;
+    }
 
+    @Override
+    public void printCompareOfStudents(String betterStudentName, String otherStudentName) {
+        System.out.println(String.format("%s лучший пуфендуец чем %s", betterStudentName, otherStudentName));
     }
 }
+

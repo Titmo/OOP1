@@ -34,18 +34,10 @@ public class Main {
                 new Slytherin("Грэхэм Монтегю", 15, 98,82,44,75,92,45),
                 new Slytherin("Грегори Гойл", 42, 56,25,84,67,23,86)
         };
-        Hogwarts.print("Падма Патил",people);
-        System.out.println();
-        Gryffindor.comparison("Гарри Поттер","Рон Уизли",studentGryffindor);
-        System.out.println();
-        Hufflepuff.comparison("Джастин Финч-Флетчли","Захария Смит",studentHufflepuff);
-        System.out.println();
-        Ravenclaw.comparison("Маркус Белби","Падма Патил",studentRavenclaw);
-        System.out.println();
-        Slytherin.comparison("Грегори Гойл","Грэхэм Монтегю",studentSlytherin);
-        System.out.println();
-        Hogwarts.comparison("Грегори Гойл","Чжоу Чанг",people);
 
+        people[1].compare(people[2]);
+        people[0].compare(people[11]);
+        System.out.println(people[0].toString());
 
 
     }

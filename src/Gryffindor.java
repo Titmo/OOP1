@@ -51,28 +51,14 @@ public class Gryffindor extends Hogwarts {
                 '}' ;
     }
 
-    public static void comparison(String firstName, String secondName, Gryffindor[] studentGryffindor) {
-        int scoresFirst = 0;
-        int scoresSecond = 0;
-        for (Gryffindor person : studentGryffindor) {
-            if (firstName.equals(person.getName())) {
-                System.out.println(person.notFullToString());
-                scoresFirst = person.getNobility() + person.getHonor() + person.getBravery();
-            }
-            if (secondName.equals(person.getName())) {
-                System.out.println(person.notFullToString());
-                scoresSecond = person.getNobility() + person.getHonor() + person.getBravery();
-            }
-        }
-        if (scoresSecond > scoresFirst) {
-            System.out.println(firstName
-                    + " лучший Гриффиндорец, чем " + secondName);
-        } else if (scoresSecond < scoresFirst) {
-            System.out.println(secondName
-                    + " лучший Гриффиндорец, чем " + firstName);
-        } else {
-            System.out.println("Ученики оба хорошие Гриффиндорцы, имеют одинаковое количество баллов");
-        }
+    @Override
+    public int calculateSpecificScore() {
+        return this.nobility + this.honor + this.bravery;
+    }
 
+    @Override
+    public void printCompareOfStudents(String betterStudentName, String otherStudentName) {
+        System.out.println(String.format("%s лучший гриффиндорец чем %s", betterStudentName, otherStudentName));
     }
 }
+

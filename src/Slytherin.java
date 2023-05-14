@@ -75,28 +75,13 @@ public class Slytherin extends Hogwarts{
                 '}' ;
     }
 
-    public static void comparison(String firstName, String secondName, Slytherin[] studentSlytherin) {
-        int scoresFirst = 0;
-        int scoresSecond = 0;
-        for (Slytherin slytherin : studentSlytherin) {
-            if (firstName.equals(slytherin.getName())) {
-                System.out.println(slytherin.notFullToString());
-                scoresFirst = slytherin.getCunning() + slytherin.getDetermination() + slytherin.getAmbition() + slytherin.getResourcefulness() + slytherin.getThirstForPower();
-            }
-            if (secondName.equals(slytherin.getName())) {
-                System.out.println(slytherin.notFullToString());
-                scoresSecond = slytherin.getCunning() + slytherin.getDetermination() + slytherin.getAmbition() + slytherin.getResourcefulness() + slytherin.getThirstForPower();
-            }
-        }
-        if (scoresSecond > scoresFirst) {
-            System.out.println(firstName
-                    + " лучший Слизеринец, чем " + secondName);
-        } else if (scoresSecond < scoresFirst) {
-            System.out.println(secondName
-                    + " лучший Слизеринец, чем " + firstName);
-        } else {
-            System.out.println("Ученики оба хорошие Слизеринецы, имеют одинаковое количество баллов");
-        }
+    @Override
+    public int calculateSpecificScore() {
+        return this.cunning + this.determination + this.ambition + this.resourcefulness + this.thirstForPower;
+    }
 
+    @Override
+    public void printCompareOfStudents(String betterStudentName, String otherStudentName) {
+        System.out.println(String.format("%s лучший слизеринец чем %s", betterStudentName, otherStudentName));
     }
 }

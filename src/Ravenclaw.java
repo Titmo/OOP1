@@ -63,28 +63,14 @@ public class Ravenclaw extends Hogwarts{
                 '}' ;
     }
 
-    public static void comparison(String firstName, String secondName, Ravenclaw[] studentRavenclaw) {
-        int scoresFirst = 0;
-        int scoresSecond = 0;
-        for (Ravenclaw ravenclaw : studentRavenclaw) {
-            if (firstName.equals(ravenclaw.getName())) {
-                System.out.println(ravenclaw.notFullToString());
-                scoresFirst = ravenclaw.getSmart() + ravenclaw.getWise() + ravenclaw.getWitty();
-            }
-            if (secondName.equals(ravenclaw.getName())) {
-                System.out.println(ravenclaw.notFullToString());
-                scoresSecond = ravenclaw.getSmart() + ravenclaw.getWise() + ravenclaw.getWitty();
-            }
-        }
-        if (scoresSecond > scoresFirst) {
-            System.out.println(firstName
-                    + " лучший Когтевранец, чем " + secondName);
-        } else if (scoresSecond < scoresFirst) {
-            System.out.println(secondName
-                    + " лучший Когтевранец, чем " + firstName);
-        } else {
-            System.out.println("Ученики оба хорошие Когтевранецы, имеют одинаковое количество баллов");
-        }
+    @Override
+    public int calculateSpecificScore() {
+        return this.smart + this.wise + this.witty + this.fullOfCreativity;
+    }
 
+    @Override
+    public void printCompareOfStudents(String betterStudentName, String otherStudentName) {
+        System.out.println(String.format("%s лучший когтевранец чем %s", betterStudentName, otherStudentName));
     }
 }
+

@@ -1,4 +1,4 @@
-public class Hogwarts {
+public abstract class Hogwarts {
     private String name;
     private int powerMagic;
     private int distanceTransgression;
@@ -30,33 +30,44 @@ public class Hogwarts {
                 ;
     }
 
-    public static void print(String name, Hogwarts[] people) {
-        for (Hogwarts person : people) {
-            if (name.equals(person.getName())) {
-                System.out.println(person.toString());
-            }
+    public int calculateGeneralScore() {
+        return powerMagic + distanceTransgression;
+    }
+
+    public abstract int calculateSpecificScore();
+
+    public abstract void printCompareOfStudents(String betterStudentName, String otherStudentName);
+
+    public void compare(Hogwarts hogwarts) {
+        if (this.getClass().equals(hogwarts.getClass())) {
+            compareBySpecific(hogwarts);
+        } else {
+            compareByGeneral(hogwarts);
         }
     }
 
-    public static void comparison(String firstName, String secondName, Hogwarts[] people ) {
-        int scoresFirst = 0;
-        int scoresSecond = 0;
-        for (Hogwarts person : people) {
-            if (firstName.equals(person.getName())) {
-                scoresFirst = person.getPowerMagic() + person.getDistanceTransgression();
-            }
-            if (secondName.equals(person.getName())) {
-                scoresSecond = person.getPowerMagic() + person.getDistanceTransgression();
-            }
-        }
-        if (scoresSecond > scoresFirst) {
-            System.out.println(firstName
-                    + " обладает большей мощностью магии, чем " + secondName);
-        } else if (scoresSecond < scoresFirst) {
-            System.out.println(secondName
-                    + " обладает большей мощностью магии, чем " + firstName);
+    private void compareBySpecific(Hogwarts hogwarts) {
+        int thisScore = this.calculateGeneralScore() + this.calculateSpecificScore();
+        int otherScore = hogwarts.calculateGeneralScore() + hogwarts.calculateSpecificScore();
+        if (thisScore > otherScore) {
+            printCompareOfStudents(this.getName(), hogwarts.getName());
+        } else if (thisScore < otherScore) {
+            printCompareOfStudents(hogwarts.getName(), this.getName());
         } else {
-            System.out.println("Ученики оба обладает большей мощностью магии, имеют одинаковое количество баллов");
+            System.out.println("Волшебники равны по силе");
+        }
+    }
+
+    private void compareByGeneral(Hogwarts hogwarts) {
+        int thisScore = this.calculateGeneralScore();
+        int otherScore = hogwarts.calculateGeneralScore();
+        if (thisScore > otherScore) {
+            System.out.println(String.format("%s сильнее чем %s", this.name, hogwarts.getName()));
+        } else if (thisScore < otherScore) {
+            System.out.println(String.format("%s сильнее чем %s", hogwarts.getName(), this.name));
+        } else {
+            System.out.println("Волшебники равны по силе");
         }
     }
 }
+
